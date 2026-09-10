@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/interactive-portrait.jsx --bundle --minify --format=iife --platform=browser --outfile=dist/interactive-portrait.js"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.0",
+    "framer-motion": "^12.23.24",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
