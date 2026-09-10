@@ -11,11 +11,15 @@
   z-index: 2;
 }
 
+.portfolio-hero > .hero-glow {
+  opacity: 0.52;
+}
+
 .interactive-portrait-shell {
   position: absolute;
   top: 50%;
-  right: clamp(16px, 4vw, 64px);
-  width: min(34vw, 600px);
+  right: clamp(-24px, calc(4vw - 40px), 24px);
+  width: min(37.5vw, 660px);
   min-width: 340px;
   transform: translateY(-50%);
   pointer-events: auto;
@@ -42,6 +46,106 @@
   opacity: 0.34;
   pointer-events: none;
   will-change: transform;
+}
+
+.portrait-capability-panel {
+  position: absolute;
+  top: 7%;
+  right: 3%;
+  z-index: 9;
+  width: min(206px, 42%);
+  padding: 15px 16px 14px;
+  border: 1px solid rgb(255 255 255 / 0.78);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 0.62);
+  box-shadow: 0 18px 42px rgb(50 65 50 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: var(--foreground);
+  pointer-events: auto;
+}
+
+.portrait-capability-panel > p {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+}
+
+.portrait-capability-list {
+  display: grid;
+  gap: 2px;
+}
+
+.portrait-capability-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 25px;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+}
+
+button.portrait-capability-item {
+  cursor: pointer;
+}
+
+button.portrait-capability-item:hover,
+button.portrait-capability-item:focus-visible {
+  color: var(--accent);
+}
+
+.portrait-capability-item > span {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.portrait-capability-hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.portrait-capability-hotspot {
+  position: absolute;
+  right: 2%;
+  width: 28%;
+  height: 8%;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.portrait-capability-hotspot-rag {
+  top: 61%;
+}
+
+.portrait-capability-hotspot-workflow {
+  top: 70%;
+}
+
+.portrait-capability-hotspot-evaluation {
+  top: 79%;
+}
+
+.portrait-capability-hotspot:hover,
+.portrait-capability-hotspot:focus-visible {
+  border-color: rgb(111 163 42 / 0.5);
+  background: rgb(255 255 255 / 0.12);
+  outline: none;
 }
 
 .portrait-layer-stage {
@@ -82,7 +186,7 @@
   z-index: 1;
   transform: scale(1.08);
   mix-blend-mode: multiply;
-  opacity: 0.9;
+  opacity: 0.62;
 }
 
 .portrait-layer-character {
@@ -122,6 +226,11 @@
   .interactive-portrait {
     filter: drop-shadow(0 22px 40px rgb(50 65 50 / 0.1));
     pointer-events: none;
+  }
+
+  .portrait-capability-panel,
+  .portrait-capability-hotspots {
+    display: none;
   }
 }
 

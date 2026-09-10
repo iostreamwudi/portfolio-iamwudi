@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
+  AnimatePresence,
   motion,
   useMotionValue,
   useReducedMotion,
@@ -132,8 +133,87 @@ function DeskLayer({ style, reducedMotion }) {
   );
 }
 
+const capabilityTargets = {
+  rag: '.experience-slide[aria-label*="中信建投证券"]',
+  workflow: '.experience-slide[aria-label*="中国银联"]',
+  evaluation: ".capability-section .capability-card:nth-of-type(3)",
+};
+
+function scrollToCapability(capability) {
+  const target = document.querySelector(capabilityTargets[capability]);
+  target?.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function CapabilityHotspots() {
+  return (
+    <div className="portrait-capability-hotspots" aria-label="画像能力导航">
+      <button
+        type="button"
+        className="portrait-capability-hotspot portrait-capability-hotspot-rag"
+        aria-label="查看中信建投证券项目中的 RAG 能力"
+        onClick={() => scrollToCapability("rag")}
+      />
+      <button
+        type="button"
+        className="portrait-capability-hotspot portrait-capability-hotspot-workflow"
+        aria-label="查看中国银联项目中的 Agent Workflow 能力"
+        onClick={() => scrollToCapability("workflow")}
+      />
+      <button
+        type="button"
+        className="portrait-capability-hotspot portrait-capability-hotspot-evaluation"
+        aria-label="查看评测与迭代能力"
+        onClick={() => scrollToCapability("evaluation")}
+      />
+    </div>
+  );
+}
+
+function CapabilityPanel() {
+  const capabilities = [
+    { key: "rag", label: "RAG" },
+    { key: "workflow", label: "Agent Workflow" },
+    { key: "evaluation", label: "Evaluation" },
+    { key: null, label: "Prompt Design" },
+  ];
+
+  return (
+    <motion.aside
+      className="portrait-capability-panel"
+      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      aria-label="AI 产品能力栈"
+    >
+      <p>AI PRODUCT STACK</p>
+      <div className="portrait-capability-list">
+        {capabilities.map((capability) => (
+          capability.key ? (
+            <button
+              type="button"
+              className="portrait-capability-item"
+              key={capability.label}
+              onClick={() => scrollToCapability(capability.key)}
+            >
+              <span aria-hidden="true">✓</span>
+              {capability.label}
+            </button>
+          ) : (
+            <div className="portrait-capability-item" key={capability.label}>
+              <span aria-hidden="true">✓</span>
+              {capability.label}
+            </div>
+          )
+        ))}
+      </div>
+    </motion.aside>
+  );
+}
+
 function InteractionController({ children }) {
   const reducedMotion = useReducedMotion();
+  const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, springConfig);
@@ -174,6 +254,7 @@ function InteractionController({ children }) {
   };
 
   const handleMouseLeave = () => {
+    setIsHovered(false);
     mouseX.set(0);
     mouseY.set(0);
   };
@@ -183,6 +264,7 @@ function InteractionController({ children }) {
       <motion.div
         className="interactive-portrait"
         aria-label="AI 产品经理画像"
+        onMouseEnter={() => setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformPerspective: 1200 }}
@@ -203,6 +285,10 @@ function InteractionController({ children }) {
           deskStyle,
           reducedMotion,
         })}
+        <AnimatePresence>
+          {isHovered && !reducedMotion ? <CapabilityPanel /> : null}
+        </AnimatePresence>
+        <CapabilityHotspots />
         <motion.div
           className="portrait-highlight"
           style={highlightStyle}
