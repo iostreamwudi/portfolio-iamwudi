@@ -1,0 +1,534 @@
+:root {
+  --forge-ink: #172019;
+  --forge-muted: #647064;
+  --forge-line: rgba(23, 32, 25, 0.14);
+  --forge-paper: #f4f6ef;
+  --forge-lime: #baff27;
+  --forge-deep: #151a15;
+}
+
+.forge-page {
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--forge-paper);
+  color: var(--forge-ink);
+  font-family: "Avenir Next", "Noto Sans SC", Inter, system-ui, sans-serif;
+}
+
+.forge-page a {
+  color: inherit;
+}
+
+.forge-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.3rem clamp(1.2rem, 5vw, 5rem);
+  border-bottom: 1px solid rgba(247, 249, 240, 0.15);
+  background: rgba(21, 26, 21, 0.84);
+  color: #f4f6ef;
+  backdrop-filter: blur(16px);
+}
+
+.forge-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(244, 246, 239, 0.76);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.forge-back:hover,
+.forge-back:focus-visible {
+  color: var(--forge-lime);
+  transform: translateX(-0.2rem);
+}
+
+.forge-brand {
+  color: var(--forge-lime);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.forge-hero {
+  position: relative;
+  padding: clamp(5.5rem, 12vw, 10rem) clamp(1.2rem, 8vw, 9rem) clamp(4rem, 8vw, 7rem);
+  background: var(--forge-deep);
+  color: #f4f6ef;
+}
+
+.forge-hero::before,
+.forge-hero::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.forge-hero::before {
+  top: -12rem;
+  right: -8rem;
+  width: 35rem;
+  height: 35rem;
+  background: radial-gradient(circle, rgba(186, 255, 39, 0.23), transparent 67%);
+  filter: blur(9px);
+}
+
+.forge-hero::after {
+  bottom: -14rem;
+  left: 28%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(91, 127, 56, 0.35), transparent 66%);
+  filter: blur(18px);
+}
+
+.forge-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(18rem, 0.94fr);
+  gap: clamp(2.5rem, 8vw, 8rem);
+  align-items: end;
+  max-width: 86rem;
+  margin: 0 auto;
+}
+
+.forge-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.5rem;
+  color: var(--forge-lime);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.forge-eyebrow::before {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--forge-lime);
+  content: "";
+}
+
+.forge-hero h1 {
+  max-width: 9ch;
+  margin: 0;
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.1em;
+  line-height: 0.86;
+}
+
+.forge-hero h1 span {
+  color: var(--forge-lime);
+}
+
+.forge-hero-lede {
+  max-width: 33rem;
+  margin: 0;
+  color: rgba(244, 246, 239, 0.72);
+  font-size: clamp(1rem, 1.7vw, 1.3rem);
+  line-height: 1.8;
+}
+
+.forge-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 2.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(244, 246, 239, 0.18);
+}
+
+.forge-hero-meta dt {
+  margin-bottom: 0.35rem;
+  color: rgba(244, 246, 239, 0.48);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.forge-hero-meta dd {
+  margin: 0;
+  color: #f4f6ef;
+  font-size: 0.94rem;
+}
+
+.forge-intro {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 8vw, 9rem);
+}
+
+.forge-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 7vw, 8rem);
+}
+
+.forge-section-label {
+  margin: 0;
+  color: #71923d;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.forge-intro h2,
+.forge-loop h2,
+.forge-reflection h2 {
+  max-width: 11ch;
+  margin: 0.8rem 0 0;
+  font-size: clamp(2.4rem, 5vw, 5.4rem);
+  letter-spacing: -0.085em;
+  line-height: 0.93;
+}
+
+.forge-intro-copy {
+  max-width: 43rem;
+}
+
+.forge-intro-copy p {
+  margin: 0;
+  color: var(--forge-muted);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1.8;
+}
+
+.forge-intro-copy p + p {
+  margin-top: 1.2rem;
+  font-size: 1rem;
+}
+
+.forge-highlight {
+  display: inline;
+  padding: 0.1em 0.2em;
+  background: #e2efc2;
+  color: #3c5d22;
+}
+
+.forge-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--forge-line);
+  border-bottom: 1px solid var(--forge-line);
+}
+
+.forge-stat {
+  min-height: 8rem;
+  padding: 1.4rem 1.2rem;
+  border-right: 1px solid var(--forge-line);
+}
+
+.forge-stat:last-child {
+  border-right: 0;
+}
+
+.forge-stat strong {
+  display: block;
+  color: #5f882d;
+  font-size: clamp(1.8rem, 3vw, 3.1rem);
+  letter-spacing: -0.08em;
+}
+
+.forge-stat span {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--forge-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.forge-screens {
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 8vw, 9rem);
+  background: #e6ebdf;
+}
+
+.forge-screens-inner {
+  max-width: 86rem;
+  margin: 0 auto;
+}
+
+.forge-screens-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+.forge-screens-heading h2 {
+  margin: 0.75rem 0 0;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  letter-spacing: -0.085em;
+  line-height: 0.93;
+}
+
+.forge-screens-heading p {
+  max-width: 19rem;
+  margin: 0;
+  color: var(--forge-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.forge-gallery {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.9fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.forge-shot {
+  overflow: hidden;
+  border-radius: 1.4rem;
+  background: #171b16;
+  box-shadow: 0 1.5rem 3.5rem rgba(49, 72, 42, 0.17);
+}
+
+.forge-shot:nth-child(2) {
+  margin-top: 4.5rem;
+}
+
+.forge-shot:nth-child(3) {
+  margin-top: 9rem;
+}
+
+.forge-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.forge-shot figcaption {
+  padding: 0.8rem 1rem 1rem;
+  color: rgba(244, 246, 239, 0.65);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.forge-loop {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 8vw, 9rem);
+}
+
+.forge-loop-head {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.55fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.forge-loop-head p {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--forge-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.forge-loop-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--forge-line);
+}
+
+.forge-loop-item {
+  position: relative;
+  min-height: 15rem;
+  padding: 1.3rem 1rem 1.4rem;
+  border-right: 1px solid var(--forge-line);
+}
+
+.forge-loop-item:last-child {
+  border-right: 0;
+}
+
+.forge-loop-item::before {
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  background: var(--forge-lime);
+  box-shadow: 0 0 0 0.35rem #e3efc7;
+  content: "";
+}
+
+.forge-loop-item strong {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+}
+
+.forge-loop-item p {
+  margin: 0.7rem 0 0;
+  color: var(--forge-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.forge-reflection {
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 8vw, 9rem);
+  background: var(--forge-deep);
+  color: #f4f6ef;
+}
+
+.forge-reflection-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  max-width: 86rem;
+  margin: 0 auto;
+}
+
+.forge-reflection .forge-section-label {
+  color: var(--forge-lime);
+}
+
+.forge-reflection h2 {
+  max-width: 9ch;
+}
+
+.forge-reflection-copy {
+  padding-top: 2.4rem;
+}
+
+.forge-reflection-copy p {
+  max-width: 38rem;
+  margin: 0;
+  color: rgba(244, 246, 239, 0.72);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.forge-reflection-copy p + p {
+  margin-top: 1.2rem;
+}
+
+.forge-reflection-quote {
+  margin-top: 2rem !important;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--forge-lime);
+  color: #f4f6ef !important;
+  font-size: clamp(1.3rem, 2.5vw, 2rem) !important;
+  letter-spacing: -0.045em;
+  line-height: 1.45 !important;
+}
+
+.forge-case-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem clamp(1.2rem, 8vw, 9rem);
+  background: #0d110d;
+  color: rgba(244, 246, 239, 0.64);
+  font-size: 0.78rem;
+}
+
+.forge-case-footer a {
+  color: var(--forge-lime);
+  text-decoration: none;
+}
+
+@media (max-width: 780px) {
+  .forge-hero-inner,
+  .forge-intro-grid,
+  .forge-loop-head,
+  .forge-reflection-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .forge-hero h1 {
+    max-width: 7ch;
+    font-size: clamp(4.3rem, 20vw, 7rem);
+  }
+
+  .forge-hero-lede {
+    margin-top: 1rem;
+  }
+
+  .forge-stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .forge-stat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .forge-stat:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--forge-line);
+  }
+
+  .forge-screens-heading {
+    display: block;
+  }
+
+  .forge-screens-heading p {
+    margin-top: 1rem;
+  }
+
+  .forge-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .forge-shot:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .forge-shot:nth-child(2),
+  .forge-shot:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .forge-loop-list {
+    grid-template-columns: 1fr;
+  }
+
+  .forge-loop-item {
+    min-height: 0;
+    padding: 1.2rem 0 1.35rem 2.1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--forge-line);
+  }
+
+  .forge-loop-item:last-child {
+    border-bottom: 0;
+  }
+
+  .forge-loop-item::before {
+    position: absolute;
+    top: 1.35rem;
+    left: 0.4rem;
+    margin: 0;
+  }
+
+  .forge-reflection-copy {
+    padding-top: 0;
+  }
+
+  .forge-case-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forge-back {
+    transition-duration: 0.01ms;
+  }
+}
